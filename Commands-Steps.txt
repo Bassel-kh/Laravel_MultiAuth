@@ -1,0 +1,125 @@
+HOW TO USE MULTIPLE AUTHENTICATION GUARDS IN A LARAVEL APP
+
+August 22nd, 2018
+You will need PHP 7+, Laravel 5.6+, Composer and Laravel installer. Some knowledge of PHP and Laravel will be helpful.
+If you have used Laravel for a while, you should have heard a lot about multiple authentications. You should have also heard “guards” a whole lot. But if you are fairly new to Laravel, multiple authentications makes it possible for you to have different classes of users access different/similar parts of the same application.
+
+There are many reasons why you may want to use multiple authentications in your Laravel application. For example, you have a large application that runs an entire company. Customers also interact with the product and services of the company through the same application. The application also has a blog and there is a department in the company responsible for handling the blog.
+
+We can see from the application above that there are already three sets of users. For customers, we can have them use a certain authentication process to access the system. For writers, they could have a totally different authentication process and even have roles to enable a more robust content management process. For the rest of the company, you can have different roles representing different functions.
+
+Now, let us look at how to create multiple authentications for our different class of users.
+
+Prerequisites
+Knowledge of PHP (version >= 7.1.3).
+Knowledge of Laravel (version 5.6.x).
+Composer is installed on your computer (version >= 1.3.2).
+Laravel installer is installed on your computer.
+
+Getting started
+If you checked off all the items on the prerequisites list, then this tutorial is already looking solid for you. We will create a Laravel app that has three user classes — admin, writer, user. We will make guards for the three user classes and restrict different parts of our application based on those guards.
+
+Create the application
+We need to create a new Laravel application. Run the following command on your terminal to create a new Laravel application:
+
+    $ laravel new multi-auth
+    $ cd multi-auth
+    You will need PHP 7+, Laravel 5.6+, Composer and Laravel installer. Some knowledge of PHP and Laravel will be helpful.
+    If you have used Laravel for a while, you should have heard a lot about multiple authentications. You should have also heard “guards” a whole lot. But if you are fairly new to Laravel, multiple authentications makes it possible for you to have different classes of users access different/similar parts of the same application.
+
+    There are many reasons why you may want to use multiple authentications in your Laravel application. For example, you have a large application that runs an entire company. Customers also interact with the product and services of the company through the same application. The application also has a blog and there is a department in the company responsible for handling the blog.
+
+    We can see from the application above that there are already three sets of users. For customers, we can have them use a certain authentication process to access the system. For writers, they could have a totally different authentication process and even have roles to enable a more robust content management process. For the rest of the company, you can have different roles representing different functions.
+
+    Now, let us look at how to create multiple authentications for our different class of users.
+
+    Prerequisites
+    Knowledge of PHP (version >= 7.1.3).
+    Knowledge of Laravel (version 5.6.x).
+    Composer is installed on your computer (version >= 1.3.2).
+    Laravel installer is installed on your computer.
+    Getting started
+    If you checked off all the items on the prerequisites list, then this tutorial is already looking solid for you. We will create a Laravel app that has three user classes — admin, writer, user. We will make guards for the three user classes and restrict different parts of our application based on those guards.
+
+    Create the application
+    We need to create a new Laravel application. Run the following command on your terminal to create a new Laravel application:
+
+        $ laravel new multi-auth
+        $ cd multi-auth
+
+*****Create the database
+    We will use SQLite database for our application. It is lightweight, fast and uses a simple flat file. Create a database file with the following command:
+
+        $ touch database/database.sqlite
+    Open the .env file in your application directory and change the following section:
+
+        DB_CONNECTION=mysql
+        DB_HOST=127.0.0.1
+        DB_PORT=3306
+        DB_DATABASE=homestead
+        DB_USERNAME=homestead
+        DB_PASSWORD=secret
+    To:
+
+        DB_CONNECTION=/absolute/path/to/database.sqlite
+    This will ensure our application uses the SQLite driver for database connections.
+
+#1 --------------------------
+Creating migrations
+We will make migrations for the admins and customers tables as Laravel comes with a users migration.
+They will be as simple as the users table, but you can extend them further based on your specific needs.
+
+*****Create migration for admins
+    To make the admins table, run the following command:
+
+        $ php artisan make:migration create_admins_table
+    From the database/migrations directory, open the admins migrations file and edit it as follows:
+    // database/migrations/<timestamp>_create_admins_table.php
+
+        [...]
+        public function up()
+        {
+            Schema::create('admins', function (Blueprint $table) {
+                $table->increments('id');
+                $table->string('name');
+                $table->string('email')->unique();
+                $table->string('password');
+                $table->boolean('is_super')->default(false);
+                $table->rememberToken();
+                $table->timestamps();
+            });
+        }
+        [...]
+    We have created a simple migration and defined the columns we want the admin table to have.
+    Eloquent provides methods that represent datatypes of our database table. We use them to define
+    the datatypes of our table columns.
+
+*****Create migration for customers
+     To make the customers table, run the following command:
+
+         $ php artisan make:migration create_customers_table
+     Now, open the customers migrations file and edit it as follows:
+
+         database/migrations/<timestamp>_create_customers_table.php
+         [...]
+         public function up()
+         {
+             Schema::create('customers', function (Blueprint $table) {
+                 $table->increments('id');
+                 $table->string('name');
+                 $table->string('email')->unique();
+                 $table->string('password');
+                 $table->boolean('is_editor')->default(false);
+                 $table->rememberToken();
+                 $table->timestamps();
+             });
+         }
+         [...]
+     We just created a simple migration and defined the columns we want the customers table to have.
+     Eloquent provides methods that represent datatypes of our database table, so it is easy to decide what
+     we want each one to be.
+
+*****Migrate the database
+     Now that we have defined our tables, let us migrate the database:
+
+         $ php artisan migrate
