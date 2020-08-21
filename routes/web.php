@@ -36,5 +36,6 @@ Route::post('/register/admin', 'Auth\RegisterController@createAdmin');
 Route::post('/register/customer', 'Auth\RegisterController@createCustomer');
 
 Route::view('/home', 'home')->middleware('auth');
-Route::view('/admin', 'admin');
-Route::view('/customer', 'customer');
+//Route::view('/admin', 'admin')->middleware('auth:admin');
+Route::get('/admin', 'AdminController@adminIndex');
+Route::view('/customer', 'customer')->middleware('auth:customer');

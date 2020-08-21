@@ -11,8 +11,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ed51a82-3239-4ab5-a8a3-9d06810cc67e" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Commands-Steps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Commands-Steps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -140,6 +143,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -147,6 +151,11 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\Laravel_MultiAuth\app\Http\Controllers" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="phpunit.xml" type="PHPUnitRunConfigurationType" factoryName="PHPUnit">
@@ -162,7 +171,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598016392704</updated>
-      <workItem from="1598016395370" duration="5449000" />
+      <workItem from="1598016395370" duration="9004000" />
     </task>
     <task id="LOCAL-00001" summary="#0 Init">
       <created>1598016689152</created>
@@ -227,7 +236,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598021660001</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="#8 Modify how our users are redirected if authenticated">
+      <created>1598021944837</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1598021944837</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,7 +270,8 @@
     <MESSAGE value="#5 Set up authentication pages" />
     <MESSAGE value="#6 Create the pages authenticated users will access" />
     <MESSAGE value="#7 Set up the routes" />
-    <option name="LAST_COMMIT_MESSAGE" value="#7 Set up the routes" />
+    <MESSAGE value="#8 Modify how our users are redirected if authenticated" />
+    <option name="LAST_COMMIT_MESSAGE" value="#8 Modify how our users are redirected if authenticated" />
   </component>
   <component name="WindowStateProjectService">
     <state x="274" y="100" key="Vcs.Push.Dialog.v2" timestamp="1598020732118">
@@ -265,5 +282,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="536" y="149" width="700" height="530" key="recent.locations.popup/0.0.1366.738@0.0.1366.738" timestamp="1598017342314" />
+    <state x="339" y="167" key="run.anything.popup" timestamp="1598023630564">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="339" y="167" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1598023630564" />
   </component>
 </project>
