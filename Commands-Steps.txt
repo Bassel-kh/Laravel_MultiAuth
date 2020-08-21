@@ -255,3 +255,124 @@ Define the guards
          Let’s say we wish to use another ORM like RedBeanPHP for managing our database, we can then set the driver
          to say redbeanphp instead of eloquent. For the model, we pass the model we want that provider to use.
 
+#4 --------------------------
+Set up the controllers
+    To use our guards for authentication, we can either modify the existing authentication controllers or create new ones.
+    You can choose which to use based on your specific needs.
+    In this tutorial, we will modify these controllers.
+    inite default controllers:
+     {
+        Laravel UI
+        Laravel UI is a new first-party package that extracts the UI portion of a Laravel project into a separate laravel/ui package.
+        The separate package enables the Laravel team to iterate on the UI package separately from the main Laravel codebase.
+
+        You can install the laravel/ui package via composer using the following command:
+
+            $ composer require laravel/ui
+
+        Once you’ve installed laravel/ui you have a couple of commands available to generate UI code, including authorization.
+
+        If you intend to use Vue, React, or Bootstrap, the UI package provides the following command:
+
+            $ php artisan ui --help
+
+           $ php artisan ui bootstrap --auth
+           $ php artisan ui react --auth
+           $ php artisan ui vue --auth
+
+           Please run "npm install && npm run dev" to compile your fresh scaffolding
+     }
+
+*****Modify LoginController
+     Open the LoginController in app/Http/Controllers/Auth and edit as follows:
+
+         // app/Http/Controllers/Auth/LoginController.php
+
+         <?php
+
+         namespace App\Http\Controllers\Auth;
+
+         use App\Http\Controllers\Controller;
+         use Illuminate\Foundation\Auth\AuthenticatesUsers;
+         [...]
+         use Illuminate\Http\Request;
+         use Auth;
+         [...]
+         class LoginController extends Controller
+         {
+             [...]
+             public function __construct()
+             {
+                 $this->middleware('guest')->except('logout');
+                 $this->middleware('guest:admin')->except('logout');
+                 $this->middleware('guest:customer')->except('logout');
+             }
+             [...]
+         }
+    We set the middleware to restrict access to this controller or its methods. It is important we defined all the different types of guests in the controller. This way, if one type of user is logged in and you try to use another user type to log in, it will redirect you to a predefined authentication page.
+
+    See it this way: If I log in on my computer as an administrator, and my colleague who is a customer also tries to log into his account as a customer, he will not be able to.
+
+    This check is important, so we do not mess up session information and potentially corrupt our application data.
+    ------------------------------------
+    Now, define the login for admins:
+    // app/Http/Controllers/Auth/LoginController.php
+
+        [...]
+        public function showAdminLoginForm()
+        {
+            return view('auth.login', ['url' => 'admin']);
+        }
+
+        public function adminLogin(Request $request)
+        {
+            $this->validate($request, [
+                'email'   => 'required|email',
+                'password' => 'required|min:6'
+            ]);
+
+            if (Auth::guard('admin')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+                return redirect()->intended('/admin');
+            }
+            return back()->withInput($request->only('email', 'remember'));
+        }
+        [...]
+
+        We have set up a method to return the login page for an admin. We will use the same page for all the user types and only change the URL they get sent to. Saves us a lot of code we could avoid writing.
+
+        We also defined the adminLogin method which checks that the right credentials are supplied. Then we attempt to log a user in with the admin guard. It is important we set this guard when attempting a login so that the Auth facade will check the right table matching credentials. It will also set up our authentication so we can restrict pages based on the type of user who is logged in.
+
+        We redirect an authenticated user to a specific URL and send an unauthenticated user back to the login page.
+
+    ------------------------------------
+
+        Now, let us do the same thing but for the customers:
+
+            // app/Http/Controllers/Auth/LoginController.php
+
+
+            [...]
+            public function showCustomerLoginForm()
+            {
+                return view('auth.login', ['url' => 'customer']);
+            }
+
+            public function customerLogin(Request $request)
+            {
+                $this->validate($request, [
+                    'email'   => 'required|email',
+                    'password' => 'required|min:6'
+                ]);
+
+                if (Auth::guard('customer')->attempt(['email' => $request->email, 'password' => $request->password], $request->get('remember'))) {
+
+                    return redirect()->intended('/customer');
+                }
+                return back()->withInput($request->only('email', 'remember'));
+            }
+            [...]
+        And our login is set. Hurray!!!
+
+
+#5 --------------------------
