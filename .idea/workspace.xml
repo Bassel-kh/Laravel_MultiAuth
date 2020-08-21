@@ -12,7 +12,7 @@
   <component name="ChangeListManager">
     <list default="true" id="9ed51a82-3239-4ab5-a8a3-9d06810cc67e" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/Commands-Steps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Commands-Steps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +162,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598016392704</updated>
-      <workItem from="1598016395370" duration="5154000" />
+      <workItem from="1598016395370" duration="5449000" />
     </task>
     <task id="LOCAL-00001" summary="#0 Init">
       <created>1598016689152</created>
@@ -220,7 +220,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598021182853</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="#7 Set up the routes">
+      <created>1598021660001</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1598021660001</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -246,7 +253,8 @@
     <MESSAGE value="&#10;#4 Set up the controllers ***** Modify RegisterController" />
     <MESSAGE value="#5 Set up authentication pages" />
     <MESSAGE value="#6 Create the pages authenticated users will access" />
-    <option name="LAST_COMMIT_MESSAGE" value="#6 Create the pages authenticated users will access" />
+    <MESSAGE value="#7 Set up the routes" />
+    <option name="LAST_COMMIT_MESSAGE" value="#7 Set up the routes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="274" y="100" key="Vcs.Push.Dialog.v2" timestamp="1598020732118">
