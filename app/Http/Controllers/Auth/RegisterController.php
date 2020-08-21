@@ -2,12 +2,18 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Http\Controllers\Controller;
+
 use App\Providers\RouteServiceProvider;
+///////////////////////////////////////////
 use App\User;
-use Illuminate\Foundation\Auth\RegistersUsers;
+use App\Admin;
+use App\Customer;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
+//////////////////////////////////////////
 
 class RegisterController extends Controller
 {
@@ -39,6 +45,8 @@ class RegisterController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+        $this->middleware('guest:admin');
+        $this->middleware('guest:customer');
     }
 
     /**
@@ -70,4 +78,46 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    ///////////////////////////// Begin Admin Methods ///////////////////////////////////
+    public function showAdminRegisterForm()
+    {
+        return view('auth.register', ['url' => 'admin']);
+    }
+
+    // methods for creating an admin
+    protected function createAdmin(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $admin = Admin::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/admin');
+    }
+
+    ///////////////////////////// End Admin Methods ///////////////////////////////////
+    /// ########################################################################### ///
+    ///////////////////////////// Begin Customer Methods ///////////////////////////////////
+
+    public function showCustomerRegisterForm()
+    {
+        return view('auth.register', ['url' => 'customer']);
+    }
+
+    // methods for creating an customer
+    protected function createCustomer(Request $request)
+    {
+        $this->validator($request->all())->validate();
+        $customer = Customer::create([
+            'name' => $request['name'],
+            'email' => $request['email'],
+            'password' => Hash::make($request['password']),
+        ]);
+        return redirect()->intended('login/customer');
+    }
+    ///////////////////////////// End Customer Methods ///////////////////////////////////
+
+
 }

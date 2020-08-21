@@ -373,6 +373,92 @@ Set up the controllers
             }
             [...]
         And our login is set. Hurray!!!
+    ---------------------------------------------
+*****Modify RegisterController
+     Open the RegisterController and edit as follows:
+     // app/Http/Controllers/Auth/RegisterController.php
 
+         <?php
+         [...]
+         namespace App\Http\Controllers\Auth;
+         use App\User;
+         use App\Admin;
+         use App\Customer;
+         use App\Http\Controllers\Controller;
+         use Illuminate\Support\Facades\Hash;
+         use Illuminate\Support\Facades\Validator;
+         use Illuminate\Foundation\Auth\RegistersUsers;
+         use Illuminate\Http\Request;
+         [...]
+         class RegisterController extends Controller
+         {
+             [...]
+             public function __construct()
+             {
+                 $this->middleware('guest');
+                 $this->middleware('guest:admin');
+                 $this->middleware('guest:customer');
+             }
+           [...]
+         }
+
+     We have set up the middleware the controller will use, just like we did with the LoginController.
+
+     Now, let us set up the methods to return the registration pages for the different users:
+     // app/Http/Controllers/Auth/RegisterController.php
+
+         [...]
+         public function showAdminRegisterForm()
+         {
+             return view('auth.register', ['url' => 'admin']);
+         }
+
+         public function showCustomerRegisterForm()
+         {
+             return view('auth.register', ['url' => 'customer']);
+         }
+         [...]
+
+
+     This is similar to what we did for showing different login pages.
+
+     ##############################
+
+     Now, we can define our methods for creating an admin:
+
+         // app/Http/Controllers/Auth/RegisterController.php
+
+         [...]
+         protected function createAdmin(Request $request)
+         {
+             $this->validator($request->all())->validate();
+             $admin = Admin::create([
+                 'name' => $request['name'],
+                 'email' => $request['email'],
+                 'password' => Hash::make($request['password']),
+             ]);
+             return redirect()->intended('login/admin');
+         }
+         [...]
+
+         ##################################
+
+         Next, let us define methods for creating a customer:
+
+             // app/Http/Controllers/Auth/RegisterController.php
+
+             [...]
+             protected function createCustomer(Request $request)
+             {
+                 $this->validator($request->all())->validate();
+                 $customer = Customer::create([
+                     'name' => $request['name'],
+                     'email' => $request['email'],
+                     'password' => Hash::make($request['password']),
+                 ]);
+                 return redirect()->intended('login/customer');
+             }
+             [...]
+         And registration is complete.
 
 #5 --------------------------
