@@ -25,6 +25,8 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'welcome');
 Auth::routes();
 
+Route::post('/login/multiAuth', 'Auth\LoginControllerTestOnLoginView@MultiLogin');
+
 Route::get('/login/admin', 'Auth\LoginController@showAdminLoginForm');
 Route::get('/login/customer', 'Auth\LoginController@showCustomerLoginForm');
 Route::get('/register/admin', 'Auth\RegisterController@showAdminRegisterForm');

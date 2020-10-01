@@ -11,10 +11,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9ed51a82-3239-4ab5-a8a3-9d06810cc67e" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/Http/Controllers/AdminController.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/database/seeds/AdminSeeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Commands-Steps.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Commands-Steps.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Exceptions/Handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Exceptions/Handler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeds/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/auth/register.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/register.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/customer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/customer.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/home.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/layouts/auth.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/welcome.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/welcome.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -22,7 +29,7 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -143,7 +150,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app/Http/Controllers" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/database/seeds" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -151,9 +158,12 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\wamp64\www\Laravel_MultiAuth\database\seeds" />
+      <recent name="D:\wamp64\www\Laravel_MultiAuth\app\Http\Controllers\Auth" />
       <recent name="D:\wamp64\www\Laravel_MultiAuth\app\Http\Controllers" />
     </key>
   </component>
@@ -171,7 +181,14 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1598016392704</updated>
-      <workItem from="1598016395370" duration="9004000" />
+      <workItem from="1598016395370" duration="15433000" />
+      <workItem from="1598126659214" duration="2930000" />
+      <workItem from="1598198168364" duration="6756000" />
+      <workItem from="1598593204807" duration="1403000" />
+      <workItem from="1598596552441" duration="700000" />
+      <workItem from="1599593974378" duration="20000" />
+      <workItem from="1601570897543" duration="1824000" />
+      <workItem from="1601572771272" duration="54000" />
     </task>
     <task id="LOCAL-00001" summary="#0 Init">
       <created>1598016689152</created>
@@ -243,7 +260,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598021944837</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="#9 Modify authentication exception handler">
+      <created>1598025561243</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598025561243</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -259,6 +283,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="#0 Init" />
@@ -271,13 +296,14 @@
     <MESSAGE value="#6 Create the pages authenticated users will access" />
     <MESSAGE value="#7 Set up the routes" />
     <MESSAGE value="#8 Modify how our users are redirected if authenticated" />
-    <option name="LAST_COMMIT_MESSAGE" value="#8 Modify how our users are redirected if authenticated" />
+    <MESSAGE value="#9 Modify authentication exception handler" />
+    <option name="LAST_COMMIT_MESSAGE" value="#9 Modify authentication exception handler" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="274" y="100" key="Vcs.Push.Dialog.v2" timestamp="1598020732118">
+    <state x="274" y="100" key="Vcs.Push.Dialog.v2" timestamp="1598025566206">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
-    <state x="274" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1598020732118" />
+    <state x="274" y="100" key="Vcs.Push.Dialog.v2/0.0.1366.738@0.0.1366.738" timestamp="1598025566206" />
     <state x="536" y="149" width="700" height="530" key="recent.locations.popup" timestamp="1598017342314">
       <screen x="0" y="0" width="1366" height="738" />
     </state>
@@ -286,5 +312,9 @@
       <screen x="0" y="0" width="1366" height="738" />
     </state>
     <state x="339" y="167" key="run.anything.popup/0.0.1366.738@0.0.1366.738" timestamp="1598023630564" />
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup" timestamp="1601571376225">
+      <screen x="0" y="0" width="1366" height="738" />
+    </state>
+    <state x="346" y="59" width="672" height="678" key="search.everywhere.popup/0.0.1366.738@0.0.1366.738" timestamp="1601571376225" />
   </component>
 </project>
